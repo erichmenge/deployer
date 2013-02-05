@@ -1,0 +1,31 @@
+{
+  "name":        "deployer",
+  "version":     "0.0.1",
+  "author":      "Erich Menge",
+  "description": "Hubot powered deploys",
+  "licenses":     [{
+    "type":       "MIT",
+    "url":        "http://github.com/goodgrapes/deployer/raw/master/LICENSE"
+  }],
+
+  "repository" : {
+    "type": "git",
+    "url":  "https://github.com/goodgrapes/deployer.git"
+  },
+
+  "dependencies": {
+    "coffee-script": "~> 1.4.0",
+    "express": "3.x"
+  },
+
+  "engines": {
+    "node": ">= 0.8.x",
+    "npm": "1.1.x"
+  },
+
+  "main": "./main",
+
+  "bin": {
+    "deployer": "./bin/deployer"
+  }
+}

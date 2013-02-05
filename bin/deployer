@@ -1,0 +1,4 @@
+#!/usr/bin/env coffee
+
+app = require('..')
+app.boot()
