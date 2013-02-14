@@ -16,6 +16,7 @@ class Deployer
       hubot_room: process.env.HUBOT_ROOM
       repo:       process.env.GITHUB_REPO
       owner:      process.env.GITHUB_OWNER
+      url:        process.env.HEROKU_URL
 
     ChildProcess.exec 'mkdir -p .ssh && echo "$PRIVATE_KEY" > .ssh/id_rsa && echo "$KNOWN_HOSTS" > .ssh/known_hosts', @logger
 
@@ -23,6 +24,8 @@ class Deployer
 
     @express.listen port
     console.log "Listening on port #{port}"
+
+    @antiIdle(@options.url) if @options.url
 
   success: ->
     @message "Deployed to production"
@@ -95,5 +98,11 @@ class Deployer
       child = ChildProcess.exec "cd tmp/repo && bundle exec cap deploy:rollback", @logger
 
     child.on 'exit', (code) => if code == 0 then @success() else @fail()
+
+  antiIdle: (url) =>
+    setInterval =>
+      @http(url + 'ping').post() (err, response, body) =>
+        console.log "Self pinging"
+    , 1200000
 
 module.exports = Deployer

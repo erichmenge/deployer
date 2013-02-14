@@ -14,4 +14,7 @@ class Router
       res.send(200)
       app.getStatus()
 
+    express.post '/ping', (req, res) ->
+      res.send 'PONG!'
+
 module.exports = Router

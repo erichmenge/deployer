@@ -31,3 +31,7 @@ After you create your Heroku app, you'll need to set some environment variables.
 * HUBOT_ROOM: The room to send messages to via http-post-say
 * HUBOT_URL: The URL to your Hubot, with trailing slash (i.e http://bot.foo.com/)
 * PRIVATE_KEY: The private SSH key needed to connect to both github and the deploy machine (again because non persistent file system)
+
+## Optional
+* HEROKU_URL: The URL of deployer with trailing slash (specifying it will keep it alive)
+
